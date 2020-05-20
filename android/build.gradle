@@ -42,7 +42,9 @@ android {
 }
 
 repositories {
-    mavenCentral()
+    mavenLocal()
+    google()
+    jcenter()
     if (project == rootProject) {
         maven {
             url "https://dl.bintray.com/wordpress-mobile/react-native-mirror/"
