@@ -1,9 +1,5 @@
 
 buildscript {
-    repositories {
-        jcenter()
-    }
-
     // The Android Gradle plugin is only required when opening the android folder stand-alone.
     // This avoids unnecessary downloads and potential conflicts when the library is included as a
     // module dependency in an application project.
@@ -57,5 +53,11 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.facebook.react:react-native:0.61.5'
+    if (project == rootProject) {
+        // If this is the root project (e.g. Jitpack), specify a version
+        implementation 'com.facebook.react:react-native:0.61.5'
+    } else {
+        //noinspection GradleDynamicVersion
+        implementation "com.facebook.react:react-native:${safeExtGet('reactnativeVersion', '+')}"
+    }
 }
